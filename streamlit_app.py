@@ -63,6 +63,8 @@ data3 = donnees_clients.loc[donnees_clients['SK_ID_CURR'] == NUM_CLIENT, feature
 
 if NUM_CLIENT != '':
 
+	#Il faudra rajouter un test pour voir si le client existe dans la base de données.
+
 	#ligne test qui permet d'afficher le dataframe en cas de tests unitaires
 	# st.dataframe(data3)
 
@@ -71,17 +73,18 @@ if NUM_CLIENT != '':
 	st.write(result2)
 
 
-	explain_pred = st.button('Explain Predictions')
+	#Bouton permettant de générer les explanations du model
+	explain_pred = st.button('Cliquer ici pour obtenir des explications')
 
-	#st.write(donnees_train[0])
-
-
+	#Si l'utilisateur appuie sur le bouton explain predictions, on lui affiche les explications
 	if explain_pred:
-		with st.spinner('Generating explanations'):
+		with st.spinner('Generating explanations'): #permet d'informer l'utilisateur que le calcul prend un peu de temps
 			explainer = lime_tabular.LimeTabularExplainer(donnees_train,mode="classification",class_names=features)
 			#explainer = LimeTextExplainer(class_names=class_names)
 			exp = explainer.explain_instance(data3.values[0],
 				model.predict_proba, num_features=20)
-			#components.html(exp.as_html())
+			mongraph_html = exp.as_html()
+			components.html(mongraph_html, height=800)
+
 			st.pyplot(exp.as_pyplot_figure())
 		#st.write("en cours de reflexion...")
