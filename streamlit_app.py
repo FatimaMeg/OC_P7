@@ -54,7 +54,7 @@ def num_client_scoring(model, num_client):
 	faillite_proba2 = model.predict_proba(data2)
 
 	return {'Le client risque-t-il d\'être en faillite' : faillite_resultat2,\
-			'Sa probabilite de faillite est de ': round(faillite_proba2[0][1]*100,4) \'%'}
+			'Sa probabilite de faillite est de ': round(faillite_proba2[0][1]*100,4), \'%'}
 
 
 
