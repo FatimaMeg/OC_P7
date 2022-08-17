@@ -1,4 +1,4 @@
 # OC_P7
-P7 Openclassrooms project repository
+P7 Projet Openclassrooms. 
 
-This repository is dedicated to the P7 Openclassrooms project that builds a scoring model for credit-bank customers.
+Ce répertoire contient le code de la modélisation, du pré-traitement à la prédiction.
